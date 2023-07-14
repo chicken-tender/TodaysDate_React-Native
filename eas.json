@@ -10,9 +10,10 @@
     "preview": {
       "distribution": "internal"
     },
-    "production": {
-      "android" : {
-        "buildType" : "apk"
+    "release": {
+      "distribution": "store",
+      "android": {
+        "buildType": "app-bundle"
       }
     }
   },
