@@ -18,14 +18,15 @@ export default function MyTabs() {
       initialRouteName="Home"
       screenOptions={{
           position: 'absolute',
-          activeTintColor: '#e91e63',
+          tabBarActiveTintColor: '#FF62AD',
+          tabBarInactiveTintColor: '#818087',
           tabBarStyle: {
-              height: 60,
+              height: 80,
               paddingTop: 8,
-              paddingBottom: 8
+              paddingBottom: 14
           }
       }}>
-      <Tab.Screen name="Home" component={HomeMenu}
+      <Tab.Screen name="홈" component={HomeMenu}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
@@ -33,27 +34,27 @@ export default function MyTabs() {
           ),
         }}
       />
-      <Tab.Screen name="Board" component={Board}
+      <Tab.Screen name="지역행사" component={FestivalMenu}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name={"clipboard"} color={color} size={size} />
+            <FontAwesome5 name={"umbrella-beach"} color={color} size={size} />
           ),
         }}
       />
-      <Tab.Screen name="Chatting" component={Chatting}
+      <Tab.Screen name="경로 만들기" component={WriteMenu}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name={"rocketchat"} color={color} size={size} />
+            <FontAwesome5 name={"map-marker-alt"} color={color} size={size} />
           ),
         }}
       />
-      <Tab.Screen name="Setting" component={Setting}
+      <Tab.Screen name="마이 페이지" component={MyPageMenu}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <Feather name={"settings"} color={color} size={size} />
+            <FontAwesome5 name={"user-circle"} color={color} size={size} />
           ),
         }}
       />
@@ -67,8 +68,7 @@ function HomeMenu({ navigation }) {
 
   useFocusEffect(
       React.useCallback(() => {
-          webViewRef.current.injectJavaScript('location.href="' + 'http://todaysdate.site' + '"');
-          console.log("useFocusEffect : todaysdate.site");
+          webViewRef.current.injectJavaScript('location.href="' + 'http://todaysdate.site/home' + '"');
           setLoading(false);
       }, [])
   );
@@ -82,54 +82,90 @@ function HomeMenu({ navigation }) {
           <WebView
               ref={webViewRef}
               onLoad={() => setLoading(false)}
-              source={{ uri: 'http://todaysdate.site' }}
+              source={{ uri: 'http://todaysdate.site/home' }}
           />
           {loading && <LoadAnimation />}
       </SafeAreaView>
   )
 }
 
-function Board({ navigation }) {
+function FestivalMenu({ navigation }) {
   const webViewRef = useRef(null);
   const [loading, setLoading] = useState(true);
+
+  useFocusEffect(
+      React.useCallback(() => {
+          webViewRef.current.injectJavaScript('location.href="' + 'http://todaysdate.site/festival/1' + '"');
+          setLoading(false);
+      }, [])
+  );
 
   function LoadAnimation() {
       return (<Spinner visible={loading} />)
   }
 
   return (
-      <SafeAreaView>
-          <Text>안녕하세요. 여기는 Board 입니다.</Text>
+      <SafeAreaView style={styles.container}>
+          <WebView
+              ref={webViewRef}
+              onLoad={() => setLoading(false)}
+              source={{ uri: 'http://todaysdate.site/festival/1' }}
+          />
+          {loading && <LoadAnimation />}
       </SafeAreaView>
   )
 }
 
-function Chatting({ navigation }) {
+function WriteMenu({ navigation }) {
   const webViewRef = useRef(null);
   const [loading, setLoading] = useState(true);
+
+  useFocusEffect(
+      React.useCallback(() => {
+          webViewRef.current.injectJavaScript('location.href="' + 'http://todaysdate.site/write' + '"');
+          setLoading(false);
+      }, [])
+  );
 
   function LoadAnimation() {
       return (<Spinner visible={loading} />)
   }
 
   return (
-      <SafeAreaView>
-          <Text>안녕하세요. 여기는 Chatting 입니다.</Text>
+      <SafeAreaView style={styles.container}>
+          <WebView
+              ref={webViewRef}
+              onLoad={() => setLoading(false)}
+              source={{ uri: 'http://todaysdate.site/write' }}
+          />
+          {loading && <LoadAnimation />}
       </SafeAreaView>
   )
 }
 
-function Setting({ navigation }) {
+function MyPageMenu({ navigation }) {
   const webViewRef = useRef(null);
   const [loading, setLoading] = useState(true);
+
+  useFocusEffect(
+      React.useCallback(() => {
+          webViewRef.current.injectJavaScript('location.href="' + 'http://todaysdate.site/mypage' + '"');
+          setLoading(false);
+      }, [])
+  );
 
   function LoadAnimation() {
       return (<Spinner visible={loading} />)
   }
 
   return (
-      <SafeAreaView>
-          <Text>안녕하세요. 여기는 Setting 입니다.</Text>
+      <SafeAreaView style={styles.container}>
+          <WebView
+              ref={webViewRef}
+              onLoad={() => setLoading(false)}
+              source={{ uri: 'http://todaysdate.site/mypage' }}
+          />
+          {loading && <LoadAnimation />}
       </SafeAreaView>
   )
 }

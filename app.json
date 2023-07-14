@@ -33,7 +33,7 @@
       "versionCode": 1
     },
     "web": {
-      "favicon": "./assets/favicon.ico"
+      "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
