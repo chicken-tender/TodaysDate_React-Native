@@ -68,7 +68,7 @@ function HomeMenu({ navigation }) {
 
   useFocusEffect(
       React.useCallback(() => {
-          webViewRef.current.injectJavaScript('location.href="' + 'http://todaysdate.site/home' + '"');
+          webViewRef.current.injectJavaScript('location.href="' + 'https://todaysdate.site:8080/home' + '"');
           setLoading(false);
       }, [])
   );
@@ -82,7 +82,7 @@ function HomeMenu({ navigation }) {
           <WebView
               ref={webViewRef}
               onLoad={() => setLoading(false)}
-              source={{ uri: 'http://todaysdate.site/home' }}
+              source={{ uri: 'https://todaysdate.site:8080/home' }}
           />
           {loading && <LoadAnimation />}
       </SafeAreaView>
@@ -95,7 +95,7 @@ function FestivalMenu({ navigation }) {
 
   useFocusEffect(
       React.useCallback(() => {
-          webViewRef.current.injectJavaScript('location.href="' + 'http://todaysdate.site/festival/1' + '"');
+          webViewRef.current.injectJavaScript('location.href="' + 'https://todaysdate.site:8080/festival/1' + '"');
           setLoading(false);
       }, [])
   );
@@ -109,7 +109,7 @@ function FestivalMenu({ navigation }) {
           <WebView
               ref={webViewRef}
               onLoad={() => setLoading(false)}
-              source={{ uri: 'http://todaysdate.site/festival/1' }}
+              source={{ uri: 'https://todaysdate.site:8080/festival/1' }}
           />
           {loading && <LoadAnimation />}
       </SafeAreaView>
@@ -122,7 +122,7 @@ function WriteMenu({ navigation }) {
 
   useFocusEffect(
       React.useCallback(() => {
-          webViewRef.current.injectJavaScript('location.href="' + 'http://todaysdate.site/write' + '"');
+          webViewRef.current.injectJavaScript('location.href="' + 'https://todaysdate.site:8080/write' + '"');
           setLoading(false);
       }, [])
   );
@@ -136,7 +136,7 @@ function WriteMenu({ navigation }) {
           <WebView
               ref={webViewRef}
               onLoad={() => setLoading(false)}
-              source={{ uri: 'http://todaysdate.site/write' }}
+              source={{ uri: 'https://todaysdate.site:8080/write' }}
           />
           {loading && <LoadAnimation />}
       </SafeAreaView>
@@ -149,7 +149,7 @@ function MyPageMenu({ navigation }) {
 
   useFocusEffect(
       React.useCallback(() => {
-          webViewRef.current.injectJavaScript('location.href="' + 'http://todaysdate.site/mypage' + '"');
+          webViewRef.current.injectJavaScript('location.href="' + 'https://todaysdate.site:8080/mypage' + '"');
           setLoading(false);
       }, [])
   );
@@ -163,7 +163,7 @@ function MyPageMenu({ navigation }) {
           <WebView
               ref={webViewRef}
               onLoad={() => setLoading(false)}
-              source={{ uri: 'http://todaysdate.site/mypage' }}
+              source={{ uri: 'https://todaysdate.site:8080/mypage' }}
           />
           {loading && <LoadAnimation />}
       </SafeAreaView>
